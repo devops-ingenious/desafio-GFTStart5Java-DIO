@@ -5,6 +5,8 @@ public class ContaCorrente extends Conta {
 
     @Override
     public void imprimirExtrato() {
+        System.out.println();
+        System.out.println();
         System.out.println("------------------------------------------------------------------------");
         System.out.print("                         Extrato Conta Corrente    ");
         System.out.println(data + " - " + hora);
