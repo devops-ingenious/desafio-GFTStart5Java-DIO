@@ -7,27 +7,23 @@ public abstract class Conta implements IConta {
 
     private static int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
-
     protected int agencia;
     protected int numero;
-
     protected double creditoPessoal;
-
     protected double valorDeposito;
-
-//    protected double[] saques;
     protected List<Double> saques = new ArrayList<Double>();
-
     protected double valorTransferencia;
     protected double saldo;
+    protected Cliente cliente;
 
     Date dataHoraAtual = new Date();
     String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
     String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
 
-    public Conta() {
+    public Conta(Cliente cliente) {
         this.agencia = Conta.AGENCIA_PADRAO;
         this.numero = SEQUENCIAL++;
+        this.cliente = cliente;
     }
 
     @Override
@@ -74,6 +70,7 @@ public abstract class Conta implements IConta {
     }
 
     protected void imprimirInfosComuns() {
+        System.out.println(String.format("Nome do titular: %s", this.cliente.getNome()));
         System.out.println(String.format("Agência: %s", this.agencia));
         System.out.println(String.format("Número da Conta: %d", this.numero));
         System.out.println(String.format("Saldo Disponível: %.2f", this.saldo));
